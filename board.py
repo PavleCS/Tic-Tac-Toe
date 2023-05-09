@@ -25,7 +25,8 @@ class Board(tk.Tk):
     def create_grid(self):
         grid_frame = tk.Frame(master=self, bg="#F6F1F1")
         grid_frame.pack()
-        self.button_image = tk.PhotoImage(file="button.png")
+        self.button_image = tk.PhotoImage(file="btn.png")
+        self.button_image = self.button_image.subsample(2, 2)
         for row in range(3):
             self.rowconfigure(row, weight=1, minsize=50)
             self.columnconfigure(row, weight=1, minsize=75)
@@ -36,6 +37,7 @@ class Board(tk.Tk):
                     font=font.Font(size=36, weight="bold"),
                     image=self.button_image,
                     highlightthickness=0,
+                    bg="#F6F1F1",
                     border=0,
                     width=100,
                     height=100,
@@ -44,7 +46,7 @@ class Board(tk.Tk):
                 button.grid(
                     row=row,
                     column=col,
-                    padx=5,
-                    pady=5,
-                    sticky="nsew"
+                    padx=3,
+                    pady=3,
+                    sticky="snew"
                 )
